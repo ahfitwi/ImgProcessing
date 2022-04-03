@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Apr 12 00:04:35 2019
+
+@author: alem
+"""
+
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+def get_width(xy):
+    width = abs(xy[1] - xy[3])
+    return width
+
+def get_height(xy):
+    height = abs(xy[0] - xy[2])
+    return height
+
+def get_area(xy):
+    width = get_width(xy)
+    height = get_height(xy)
+    area = width * height
+    return area
+
+def get_biggest_box(xy_list):
+    biggest_area = 0
+    for i, xy in enumerate(xy_list):
+        area = get_area(xy)
+        if area > biggest_area:
+            biggest_area = area
+            biggest_xy = xy
+            ix = i
+    return biggest_xy, ix
+
+def overlay_box(image, xy): 
+    position = (xy[1], xy[0])
+    width = get_width(xy)
+    height = get_height(xy)
+    fig, ax = plt.subplots(1)
+    ax.imshow(image)
+    rect = patches.Rectangle(position, 
+                             width, 
+                             height,
+                             linewidth=1,
+                             edgecolor='r',
+                             facecolor='none')
+    ax.add_patch(rect)
+    plt.show()
+
+
+big_box, big_ix = get_biggest_box(r['rois'])
+overlay_box(image, big_box)
+
+  

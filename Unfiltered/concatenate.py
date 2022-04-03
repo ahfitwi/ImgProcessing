@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed May  1 20:00:03 2019
+@author: alem
+"""
+#=============================================================================
+from glob import glob                                                           
+import cv2 
+import os
+import numpy as np
+#=============================================================================
+path1='/home/alem/Desktop/privacy/test/cleaninfo/'
+path2='/home/alem/Desktop/privacy/test/list/'
+path3='/home/alem/Desktop/privacy/test/allinfo/info'
+#=============================================================================
+#Create the serial number from 1 to 11600
+sn=[]
+for k in range(1,11601):
+    if k<10:
+        line='0000'+ str(k)
+    elif k>=10 and k<100:
+        line='000'+ str(k)
+    elif k>=100 and k<1000:
+        line='00'+ str(k)
+    elif k>=1000 and k<10000:
+        line='0'+ str(k)
+    else:
+        line=str(k)
+    sn.append(line) 
+#=============================================================================
+#Create a list of titles
+p=0
+paths=[]
+for i in range(1,581):
+    pathing=path3+str(i)+'/'
+    paths.append(pathing)
+#============================================================================= 
+#Grab current paths and files
+def grab_allpaths(paths):
+    all_paths=[]
+    files=[]
+    c=0
+    for path_i in paths:  
+        temp=sorted(os.listdir(path_i))
+        for file_name in temp:
+            if ".jpg" in file_name:
+                temp1=path_i+file_name
+                all_paths.append(temp1)
+                file1=sn[c]+file_name[4:len(file_name)]
+                files.append(file1)
+                c+=1
+    return all_paths,files
+grabed_paths,grabed_files=grab_allpaths(paths)
+#=============================================================================
+#Create new paths
+new_paths=[]
+f=0
+for i in range(11600):  
+    temp3=path2+grabed_files[i]
+    new_paths.append(temp3)    
+#=============================================================================
+#Rewrite image files with new names
+for i in range(11600):
+    img1=cv2.imread(grabed_paths[i],cv2.IMREAD_GRAYSCALE)
+    print("graying")
+    cv2.imwrite(new_paths[i],img1)
+    print("writing")     
+#=============================================================================
+#Check whether the image names and info.lst content matche on one-on-one basis
+path4='/home/alem/Desktop/privacy/test/info.lst'
+def info_read():
+    with open(path4, "r") as ins:
+        info_lst=[]
+        for line in ins:
+            info_lst.append(line[0:29]) 
+    return info_lst
+info_lst=info_read()
+match=np.all(grabed_files==info_lst)
+    
+#=============================================================================

@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Sep  6 15:53:09 2019
+
+@author: alem
+"""
+
+import math
+import time
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import scipy.misc
+import pylab as pl
+from matplotlib import pyplot as mp
+import cv2
+from PIL import Image
+import random
+#scipy.misc.imsave('outfile.jpg', image_array)
+#------------------------------------------------------------------------------
+start=time.time()
+a=0.00489
+var=5.98732516340
+sn=5
+SoXIn=118811138160210142635318637165
+SoYIn=11515410245191208781102411495549
+#------------------------------------------------------------------------------
+b=math.sqrt(1-a**2);
+Xo=var+SoXIn
+Yo=var+SoYIn
+#------------------------------------------------------------------------------
+t1=9999+int(var)
+t=np.arange(0.0, t1, 0.1)
+X1 = np.array([(math.exp(a*t[i])*(Xo*math.cos(b*t[i])+
+        1/b*(Yo-a*Xo)*math.sin(b*t[i]))) for i in range(len(t))])
+Y1=np.array([(math.exp(a*t[i])*(Yo*math.cos(b*t[i])+
+        a/b*(Yo-a*Xo-b**2/a*Xo)*math.sin(b*t[i]))) for i in range(len(t))])   
+#-----------------------------------------------------------------------------
+x=((X1-min(X1))/(max(X1)-min(X1)))*255
+xx=[int(k) for k in x]
+y=([Y1-min(Y1)]/[max(Y1)-min(Y1)])*[255]
+yy=[int(j) for j in y]
+#-----------------------------------------------------------------------------
