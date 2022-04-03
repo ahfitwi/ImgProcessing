@@ -1,0 +1,80 @@
+Setting up a server
+------------------------
+~$sudo apt-get update or ~#apt-get update (you get here via sudo -i)
+~#apt-get upgrade
+~#mkdir opencv_workspace
+~#cd opencv_workspace --> :~/opencv_workspace#
+#sudo apt-get install git
+#sudo git clone https://github.com/Itseez/opencv.git
+#sudo apt-get install build-essential
+#sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+#sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+#sudo apt-get install libopencv-dev
+
+
+/home/alem/HaarPaperPrivacy
+
+/home/alem/HaarPaperPrivacy/neg
+
+cp -r /home/alem/HaarPaperPrivacy/neg/ /root/opencv_workspace/alem/
+
+to find path: realpath file_name
+https://memememememememe.me/post/training-haar-cascades/
+fps
+
+https://www.learnopencv.com/how-to-find-frame-rate-or-frames-per-second-fps-in-opencv-python-cpp/
+
+====================================================================================================
+Quorra
+
+https://www.quora.com/How-do-I-make-a-Haar-cascade-classifier
+
+Downloading
+
+    import urllib.request
+    import cv2
+    import numpy as np
+    import os
+    def store_raw_images():
+        neg_images_link = 'copy the link to the URls containing the images from image-net'   
+        neg_image_urls = urllib.request.urlopen(neg_images_link).read().decode()
+        pic_num = 2393
+        
+        if not os.path.exists('neg'):
+            os.makedirs('neg')
+            
+        for i in neg_image_urls.split('\n'):
+            try:
+                print(i)
+                urllib.request.urlretrieve(i, "neg/"+str(pic_num)+".jpg")
+                img = cv2.imread("neg/"+str(pic_num)+".jpg",cv2.IMREAD_GRAYSCALE)
+                # should be larger than samples / pos pic (so we can place our image on it)
+                resized_image = cv2.resize(img, (200, 200))
+                cv2.imwrite("neg/"+str(pic_num)+".jpg",resized_image)
+                pic_num += 1   
+            except Exception as e:
+                print(str(e)) 
+    store_raw_images()
+
+==================================================================================================
+    Now, we need to have one positive image, the object which the haar cascade will detect.
+    The training of the Haar Cascade will be done on a server, I recommend renting a server from Digital Ocean for as low as 5$ a month.
+    Once you have your server ready to go, you will want to get the actual OpenCV library.
+==================================================================================================
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install git
+    git clone https://github.com/Itseez/opencv.git
+    sudo apt-get install build-essential
+    sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+    sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+    sudo apt-get install libopencv-dev
+====================================================================================================================================
+    Now that we have gathered all the images and the server is also ready, we need to upload the negative images and the positive image on the server. You can use any FTP client for doing this, I have used WinSCP for the same.
+    Now we need to execute a bunch of commands for training the Haar Cascade.
+=====================================================================================================================================
+    opencv_createsamples -img watch5050.jpg -bg bg.txt -info info/info.lst -pngoutput info -maxxangle 0.5 -maxyangle 0.5 -maxzangle 0.5 -num 1950
+    opencv_createsamples -info info/info.lst -num 1950 -w 20 -h 20 -vec positives.vec
+    opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 1800 -numNeg 900 -numStages 10 -w 20 -h 20
+===================================================================================================================================
+

@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Apr  2 00:09:06 2019
+
+@author: Alem
+"""
+
+#!/usr/bin/env python
+from glob import glob                                                           
+import cv2 
+pngs = glob('./*.jpg')
+i=1 #start from wherever you want
+for j in pngs:
+    img = cv2.imread(j)    
+    #cv2.imwrite(j[:3] + "Img"+str(i)+'.jpg', img)
+    cv2.imwrite('/home/alem/HaarPaperPrivacy/wall/'+'wall_'+str(i)+'.jpg', img)
+    #cv2.imwrite('/home/alem/Desktop/windows/grayWins/'+name,img)
+    i+=1
+    print("printing")
