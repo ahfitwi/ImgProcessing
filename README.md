@@ -1,2 +1,2 @@
 # ImgProcessing
-Micellaneous Image Processing Methods.
+Micellaneous Image Processing Methods and Techniques.
