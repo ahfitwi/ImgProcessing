@@ -337,6 +337,55 @@ class ImgProcessing:
             plt.title(titles[i])
             plt.xticks([]),plt.yticks([])
         plt.show()
+        
+        
+        
+        
+    #----------------------------------------------------------------------    
+    def check_cnts(img):
+        """Checks the sides of a rectangle: False for closed whereas 
+           True is for open."""
+           
+        H, W = img.shape[:2]
+        flags = []
+        locs = [[H//2-20, 0, H//2+20, W//4], 
+                [0, W//2-20, H//4, W//2+20], 
+                [int(0.75*H), W//2-20, H, W//2+20],
+                [H//2-20, int(0.75*W), H//2+20, W]
+               ]
+
+        if img[locs[0][0]:locs[0][2], locs[0][1]:locs[0][3]].min() == 0:
+        	flags.append(False)
+        else:
+        	flags.append(True)
+    
+    	if img[locs[1][0]:locs[1][2], locs[1][1]:locs[1][3]].min() == 0:
+        	flags.append(False)
+    	else:
+        	flags.append(True)
+    	if img[locs[2][0]:locs[2][2], locs[2][1]:locs[2][3]].min() == 0:
+        	flags.append(False)
+    	else:
+        	flags.append(True)
+    	if img[locs[3][0]:locs[3][2], locs[3][1]:locs[3][3]].min() == 0:
+        	flags.append(False)
+    	else:
+        	flags.append(True)
+    
+    	return flags
+    	
+    #----------------------------------------------------------------------  
+    def sort_contours(cnts, mode="L2R"):
+        """Sorts Contours L2R, T2B, R2L, or B2T"""
+        
+        modes = {"L2R":[False, 1], "T2B": [False, 1],
+             "R2L":[True, 0], "B2T": [True, 0]}
+        
+        bb = [cv2.boundingRect(c) for c in cnts] (cnts, 
+                            bb) = zip(*sorted(zip(cnts, bb),
+        key=lambda x:x[1][modes[mode][1]], reverse=modes[mode][0]))
+    
+    	return cnts, bb
     #----------------------------------------------------------------------
     #                               ~END~
     #----------------------------------------------------------------------
