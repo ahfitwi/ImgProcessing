@@ -34,9 +34,17 @@ image = cv2.imread("images/cast_iron1.tif", 0)
 # Set up the SimpleBlobdetector with default parameters.
 params = cv2.SimpleBlobDetector_Params()
 
- # Filter by minDistBetweenBlobs
- # Works if there are several thresholds only
- params.minDistBetweenBlobs = 0
+# Filter by minDistBetweenBlobs
+# Works if there are several thresholds only
+#SimpleBlobDetector has many parameters, and the two are minDistBetweenBlobs 
+# and threshold (set by minThreshold, maxThreshold, thresholdStep)
+# A developer is forced to use more than one threshold values to use 
+# minDistBetweenBlobs parameter, which could degrade processing speed. 
+# It also confuses beginners without knowledge in the interworkings of the 
+# code because one would normally use just one threshold for blob detection.
+# minDistBetweenBlobs only works with more than one threshold because the code 
+# that uses them can never be reached.
+params.minDistBetweenBlobs = 0
 
 # Define thresholds
 #Can define thresholdStep. See documentation. 
