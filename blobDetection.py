@@ -34,37 +34,52 @@ image = cv2.imread("images/cast_iron1.tif", 0)
 # Set up the SimpleBlobdetector with default parameters.
 params = cv2.SimpleBlobDetector_Params()
 
+ # Filter by minDistBetweenBlobs
+ # Works if there are several thresholds only
+ params.minDistBetweenBlobs = 0
+
 # Define thresholds
 #Can define thresholdStep. See documentation. 
 params.minThreshold = 0
 params.maxThreshold = 255
 
+# Filter By Repeatability
+# Finds blob centers at d/t thresholds; the minimum valid value is 1
+params.minRepeatability = 1
+
 # Filter by Area.
+# Extract blobs that have an area between minArea (inclusive) and maxArea (exclusive).
 params.filterByArea = True
 params.minArea = 50
 params.maxArea = 10000
 
-# Filter by Color (black=0)
+# Filter by Color (black=0, white=255)
+#  This filter compares the intensity of a binary image at the center of a blob to blobColor. 
+#  If they differ, the blob is filtered out. Use blobColor = 0 to extract dark blobs and 
+# blobColor = 255 to extract light blobs.
 params.filterByColor = False  #Set true for cast_iron as we'll be detecting black regions
 params.blobColor = 0
 
 # Filter by Circularity
+# Extracted blobs have circularity ( 4∗π∗Areaper/(imeter∗perimeter)) between minCircularity 
+# (inclusive) and maxCircularity (exclusive).
 params.filterByCircularity = True
 params.minCircularity = 0.5
 params.maxCircularity = 1
 
 # Filter by Convexity
+# Extracted blobs have convexity (area / area of blob convex hull) between minConvexity
+# (inclusive) and maxConvexity (exclusive).
 params.filterByConvexity = True
 params.minConvexity = 0.5
 params.maxConvexity = 1
 
 # Filter by InertiaRatio
+#  Extracted blobs have this ratio between minInertiaRatio (inclusive) and 
+#  maxInertiaRatio (exclusive).
 params.filterByInertia = True
 params.minInertiaRatio = 0
 params.maxInertiaRatio = 1
-
-# Distance Between Blobs
-params.minDistBetweenBlobs = 0
 
 # Setup the detector with parameters
 detector = cv2.SimpleBlobDetector_create(params)
@@ -83,3 +98,33 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 # Save result
+
+"""
+params = struct();
+params.ThresholdStep = 10;
+params.MinThreshold = 10;
+params.MaxThreshold = 220;
+
+params.MinRepeatability = 2;
+
+params.MinDistBetweenBlobs = 10;
+
+params.FilterByColor = false;
+params.BlobColor = 0;
+
+params.FilterByArea = false;
+params.MinArea = 25;
+params.MaxArea = 5000;
+
+params.FilterByCircularity = false;
+params.MinCircularity = 0.9;
+params.MaxCircularity = 1e37;
+
+params.FilterByInertia = false;
+params.MinInertiaRatio = 0.1;
+params.MaxInertiaRatio = 1e37;
+
+params.FilterByConvexity = false;
+params.MinConvexity = 0.95;
+params.MaxConvexity = 1e37;
+"""
