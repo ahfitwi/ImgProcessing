@@ -12,4 +12,4 @@ Micellaneous Image Processing Methods and Techniques.
   such as an optical or radio telescope, a microscope, a camera, or an eye, to separate two objects located at a small angular distance.
 - Where does the 1.22 come from in the formula for angular resolution? The factor 1.22 in the angular resolution formula is derived from a
   calculation of the position of the first dark ring surrounding the central Airy disc of the diffraction pattern. What is the resolution formula?
-- To calculate angular resolution, use the formula: θ = 1.22 * λ / d. where λ is the wavelength of light and d is the diameter of the lens aperture.
+- To calculate angular resolution, use the formula: $\theta = \frac{1.22\lambda} { d}$. where λ is the wavelength of light and d is the diameter of the lens aperture.
