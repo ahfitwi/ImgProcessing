@@ -25,5 +25,6 @@ $$\frac{1}{f}\ =\ (n - 1)(\frac{1}{R1} - \frac{1}{r2})$$
 - If d is not negligible and lens is in a medium (for instance water):
   $$\frac{1}{f}\ =[\frac{n_l - n_m}{n_m}][\frac{1}{R1} - \frac{1}{R2} + \frac{(\frac{n_l - n_m}{n_m})d}{n_lR_1 R_2}]$$
   $$\frac{1}{f}\ =[\frac{n_l }{n_m}-1][\frac{1}{R_1} - \frac{1}{R_2} + \frac{(\frac{n_l }{n_m}-1)d}{n_lR_1 R_2}]$$
- 
+ https://www.youtube.com/watch?v=uPMztgFwsGU
+
   
