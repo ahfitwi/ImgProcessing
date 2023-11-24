@@ -14,7 +14,7 @@ Micellaneous Image Processing Methods and Techniques.
   calculation of the position of the first dark ring surrounding the central Airy disc of the diffraction pattern.
   What is the resolution formula? To calculate angular resolution, use the formula: $\theta = \frac{1.22\lambda} { d}$. where λ is the wavelength of light and d is the diameter of the lens aperture.
 - **Lens Maker Equation**: Describes the relationship between focal length, radii of curvatures, and the material the lens operates.
-$$\frac{1}{f}\ =\ (n - 1)(\frac{1}{R1} + \frac{1}{r2})$$ 
+$$\frac{1}{f}\ =\ (n - 1)(\frac{1}{R1} - \frac{1}{r2})$$ 
 - where R1 and R2 are the radii of curvature, f is the focal length, and n is the index of refraction.
 - If the lens is operating in air, then with $n_0 = 1$,  this formula will simplify.
   $$\frac{1}{f}\ =\ (n - 1)(\frac{1}{R1} + \frac{1}{r2})$$
