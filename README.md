@@ -21,6 +21,6 @@ $$\frac{1}{f}\ =\ (n - 1)(\frac{1}{R1} + \frac{1}{r2})$$
 -  From (http://www.physicsbootcamp.org/lens-maker-equation.html#:~:text=1)%201%20f%20%3D%20(%20n,on%20left%20then%20R%3C0.)
 - $$\frac{1}{f}\ =\ frac{(n_1 - n_0)}{n_0}(\frac{1}{R1} + \frac{1}{r2})$$
 - If d is not negligible:
-  $$\frac{1}{f}\ =(n_1 - 1)(\frac{1}{R1} - \frac{1}{r2} + \frac{(n-1)d}{nR_1 R_2})$$
+  $$\frac{1}{f}\ =(n_1 - 1)(\frac{1}{R1} - \frac{1}{R2} + \frac{(n-1)d}{nR_1 R_2})$$
  
   
