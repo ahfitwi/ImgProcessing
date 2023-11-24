@@ -29,4 +29,14 @@ $$\frac{1}{f}\ =\ (n - 1)(\frac{1}{R1} - \frac{1}{r2})$$
   $$\frac{1}{f}\ =[\frac{n_l }{n_m}-1][\frac{1}{R_1} - \frac{1}{R_2} + \frac{(\frac{n_l }{n_m}-1)d}{n_lR_1 R_2}]$$
  https://www.youtube.com/watch?v=uPMztgFwsGU
 
+- The Luminance here is measured using simple statistics. That is, the minimum, mean, harmonic mean, maximum, and standard deviation of the pixel values contained in the active FOV of the red, green, blue, or white images are computed and reported. The luminance, as stated in (5.1), is the ratio of the luminious flux in lumens to the area of region of interest under consideration.
+
+$$L_v\ =\ \frac{d^2\phi_v}{d\sum d\Omega_{\sum} cos\theta_{\sum}}\ \   \   (5.1)$$
+Where:
+$$L_v\ =\ luminance\ in\ \frac{cd}{m^2}$$ 
+$$d^2\phi_v\ =\ luminous\ flux\ measured\ in\ lumens (lm)$$ 
+$$d\sum\ =\ infinitesimal\ area\ (m^2)\ of\ the\ source\ containing\ the\ specified\ point$$ 
+$$d\Omega_{\sum}\ =\ infinitesimal\ solid\ angle(sr),\ Fig1.3,\ containing\ the\ specified\ direction$$ 
+$$cos\theta_{\sum}\ =\ angle\ between\ the\ normal\ to\ the\ surface\ and\ the\ specified\ direction$$ 
+
   
