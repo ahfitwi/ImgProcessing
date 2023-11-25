@@ -39,4 +39,8 @@ $$d\sum\ =\ infinitesimal\ area\ (m^2)\ of\ the\ source\ containing\ the\ specif
 $$d\Omega_{\sum}\ =\ infinitesimal\ solid\ angle(sr),\ Fig1.3,\ containing\ the\ specified\ direction$$ 
 $$cos\theta_{\sum}\ =\ angle\ between\ the\ normal\ to\ the\ surface\ and\ the\ specified\ direction$$ 
 
+- Refraction at Curved Surface:
+  https://www.geeksforgeeks.org/refraction-of-light-at-curved-surfaces/
+
+
   
