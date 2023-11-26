@@ -42,5 +42,8 @@ $$cos\theta_{\sum}\ =\ angle\ between\ the\ normal\ to\ the\ surface\ and\ the\ 
 - Refraction at Curved Surface:
   https://www.geeksforgeeks.org/refraction-of-light-at-curved-surfaces/
 
+  - Lens Physics
+https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Physics_(Boundless)/24%3A_Geometric_Optics/24.3%3A_Lenses#:~:text=or%20diverging%20lens.-,See.,nR1R2%5D.
+
 
   
